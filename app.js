@@ -1,15 +1,6 @@
 var app = angular.module('noticeApp',  ['mgcrea.ngStrap']);
 
 app.controller('NoticeCtrl', function($scope) {
-    $scope.dt = new Date();
-
-
-    $scope.datepickerOptions = {
-        format: 'dd/mm/yyyy',
-        language: 'fr',
-        autoclose: true,
-        weekStart: 0
-    }
 
     $scope.dateStart = moment().toDate();
     $scope.dateEnd = moment().add(1, 'days').toDate();
