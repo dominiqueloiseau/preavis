@@ -5,6 +5,6 @@
         "jasmine-node" : "latest"
     },
     "scripts" : {
-        "test" : "jasmine-node specs"
+        "test" : "jasmine-node tests"
     }  
 }
