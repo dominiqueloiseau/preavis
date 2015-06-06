@@ -1,23 +1,10 @@
 {
-  "name": "app",
-  "version": "1.0.0",
-  "description": "simple notice calculator",
-  "main": "app.js",
-  "scripts": {
-    "test": "jasmine-node spec"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/dominiqueloiseau/preavis.git"
-  },
-  "keywords": [
-    "notice",
-    "preavis"
-  ],
-  "author": "Dominique Loiseau",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/dominiqueloiseau/preavis/issues"
-  },
-  "homepage": "https://github.com/dominiqueloiseau/preavis"
+    "name" : "preavis",
+    "version" : "1.0.0",
+    "devDependencies" : {
+        "jasmine-node" : "latest"
+    },
+    "scripts" : {
+        "test" : "jasmine-node specs"
+    }  
 }
