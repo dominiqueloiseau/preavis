@@ -2,64 +2,66 @@
 <html lang="en" ng-app="noticeApp">
 
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Calculateur de préavis - démission - licenciement</title>
   <link rel="icon" type="image/png" href="https://assets-cdn.github.com/favicon.ico">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
-  <link rel="stylesheet" href="https://rawgit.com/cletourneau/angular-bootstrap-datepicker/master/dist/angular-bootstrap-datepicker.css">
+
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/fontawesome/4.3.0/css/font-awesome.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/8.5.0/styles/default.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/bootstrap/3.3.4/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://raw.githubusercontent.com/mgcrea/bootstrap-additions/master/dist/bootstrap-additions.min.css">
+
   <link rel="stylesheet" href="styles.css">
 
 
 </head>
 
-<body ng-controller="NoticeCtrl" class="container-fluid"">
+<body ng-controller="NoticeCtrl">
 
-  <header>
-    <h2 class="page-header">Calculateur de préavis en cas de démission ou de licenciement en Belgique</h1>
-    <p>
-      Pour une démission ou un licenciement, le préavis légal a respecter peut varier. Comme la loi en la matière a changé le 1er janvier 2014, les contrats ayant débuté avant cette date nécessitent un calcul spécial.
-    </p>
-    <p>Cette page web propose de le calculer pour vous.</p>
-  </header>
-
-
-
-
-      <h3 >1. Contrats ouvrier/employé ayant débuté <b>après</b> le premier janvier 2014</h3>
-
-
-      
-      <div class="input-group">Date de début: 
-        <input id="datepicker" type="text" data-ng-datepicker data-ng-options="datepickerOptions" data-ng-model="dateStart">
-      </div>
-      
-      <div class="input-group">Date de fin: 
-        <input id="datepicker" type="text" data-ng-datepicker data-ng-options="datepickerOptions" data-ng-model="dateEnd">
-      </div>
-      
-      <div class="input-group">Temps écoulé:
-        <div>{{elapsedTime}}</div>
-      </div>
-      
-      <div class="input-group">Durée légale du préavis: 
-        <div>{{notice}}</div>
-      </div>
-
-
-  <footer>
-    source: <a href="http://www.emploi.belgique.be/defaultTab.aspx?id=42152">http://www.emploi.belgique.be/defaultTab.aspx?id=42152</a>
-  </footer>
+  <div class="container">
+    <header>
+      <h2 class="page-header ">Calculateur de préavis en cas de démission ou de licenciement en Belgique</h1>
+      <p>
+        Pour une démission ou un licenciement, le préavis légal a respecter peut varier. Comme la loi en la matière a changé le 1er janvier 2014, les contrats ayant débuté avant cette date nécessitent un calcul spécial.
+      </p>
+      <p>Cette page web propose de le calculer pour vous.</p>
+    </header>
+    <h3 >1. Contrats ouvrier/employé</h3>
+  
+    <div class="col-xs-3 ">
+      <i class="fa fa-calendar "></i> Date de début du contrat<br>
+      <input type="text" class="form-control" ng-model="dateStart" data-max-date="{{dateEnd}}" placeholder="Du " bs-datepicker data-date-format="dd/MM/yyyy">
+    </div>
+  
+    <div class="col-xs-3">
+      <i class="fa fa-calendar "></i> Date de fin du contrat<br>
+      <input type="text" class="form-control" ng-model="dateEnd " data-min-date="{{dateStart}}" placeholder="au " bs-datepicker data-date-format="dd/MM/yyyy">
+    </div>
+    
+    <div class="col-xs-3">
+      Durée effective du contrat<br>
+      {{elapsedTime}}
+    </div>
+  
+  
+  
+    <footer>
+      source: <a href="http://www.emploi.belgique.be/defaultTab.aspx?id=42152 ">http://www.emploi.belgique.be/defaultTab.aspx?id=42152</a>
+    </footer>
+  </div>
 </body>
 
-<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
-<script src="//netdna.bootstrapcdn.com/bootstrap/2.0.4/js/bootstrap.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.js"></script>
-<script src="https://rawgithub.com/cletourneau/angular-bootstrap-datepicker/master/dist/angular-bootstrap-datepicker.js" charset="utf-8"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js"></script>
+<script src="https://code.jquery.com/jquery-2.1.3.min.js "></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js "></script>
+
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular.min.js "></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/angular-strap/2.1.2/angular-strap.min.js "></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/angular-strap/2.1.2/angular-strap.tpl.min.js "></script>
 
 
-<script src="app.js"></script>
+<script src="app.js "></script>
 
 
 </html>

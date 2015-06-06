@@ -1,4 +1,4 @@
-var app = angular.module('noticeApp', ['ng-bootstrap-datepicker']);
+var app = angular.module('noticeApp',  ['mgcrea.ngStrap']);
 
 app.controller('NoticeCtrl', function($scope) {
     $scope.dt = new Date();
@@ -11,27 +11,29 @@ app.controller('NoticeCtrl', function($scope) {
         weekStart: 0
     }
 
-    $scope.dateStart = moment().format("DD/MM/YYYY");
-    $scope.dateEnd = moment().add(1, 'years').format("DD/MM/YYYY");
+    $scope.dateStart = moment().toDate();
+    $scope.dateEnd = moment().add(1, 'days').toDate();
 
     $scope.calculateNotice = function(newValue, oldValue /*for log only */){
-        var momentEnd = moment($scope.dateStart, "DD/MM/YYYY");
+        var momentStart = moment($scope.dateStart);
+        var momentEnd = moment($scope.dateEnd);
+        
 
-        years = momentStart.diff(momentEnd, 'years');
-        momentStart.subtract(years, 'years');
+        years = momentEnd.diff(momentStart, 'years');
+        momentEnd.subtract(years, 'years');
 
-        months = momentStart.diff(momentEnd, 'months');
-        momentStart.subtract(months, 'months');
+        months = momentEnd.diff(momentStart, 'months');
+        momentEnd.subtract(months, 'months');
 
-        weeks = momentStart.diff(momentEnd, 'weeks');
-        momentStart.subtract(weeks, 'weeks');
+        weeks = momentEnd.diff(momentStart, 'weeks');
+        momentEnd.subtract(weeks, 'weeks');
 
-        days = momentStart.diff(momentEnd, 'days');
+        days = momentEnd.diff(momentStart, 'days');
 
         $scope.elapsedTime = (years ? years + " année(s) " : "") +
-            (months ? months + " mois" : "") +
-            (weeks ? weeks + " semaine(s)" : "") +
-            (days ? days + " jour(s)" : "");
+            (months ? months + " mois " : "") +
+            (weeks ? weeks + " semaine(s) " : "") +
+            (days ? days + " jour(s) " : "");
     }
 
     $scope.$watch('dateStart', $scope.calculateNotice);
