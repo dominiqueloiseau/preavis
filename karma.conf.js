@@ -13,7 +13,7 @@ module.exports = function(config) {
     files: [
       'https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular.min.js',
       'https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js',
-      'src/*.js'
+      'app/*.js'
     ],
     // list of files to exclude
     exclude: [],
