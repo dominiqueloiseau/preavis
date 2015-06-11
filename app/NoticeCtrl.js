@@ -1,7 +1,7 @@
 'use strict'
 
 var app = angular.module('noticeApp', ['mgcrea.ngStrap' /*datePicker*/ ]);
-app.controller('NoticeCtrl', window.NoticeCtrl);
+
 
 window.calculateElapsedTime = function(dateStart, dateEnd) {
     var momentStart = moment(dateStart);
@@ -26,7 +26,7 @@ window.calculateElapsedTime = function(dateStart, dateEnd) {
         (days ? days + " jour(s) " : "");
 }
 
-window.NoticeCtrl = function($scope) {
+var NoticeCtrl = function($scope) {
 
     $scope.dateStart = moment().toDate();
     $scope.dateEnd = moment().add(1, 'days').toDate();
@@ -39,3 +39,5 @@ window.NoticeCtrl = function($scope) {
     $scope.$watch('dateEnd', $scope.calculateNotice);
 
 };
+
+app.controller('NoticeCtrl', NoticeCtrl);
