@@ -4,6 +4,8 @@
 module.exports = function(config) {
   config.set({
 
+    plugins : ['karma-jasmine', 'karma-phantomjs-launcher'],
+
     // base path that will be used to resolve all patterns (eg. files, exclude)
     basePath: '',
 
@@ -15,13 +17,15 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      '**'
+      'https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular.min.js',
+      'https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js',
+      'src/*.js'
     ],
 
 
     // list of files to exclude
     exclude: [
-      'node_modules/**'
+      
     ],
 
 
@@ -38,7 +42,7 @@ module.exports = function(config) {
 
 
     // web server port
-    port: 9876,
+    /*port: 9876,*/
 
 
     // enable / disable colors in the output (reporters and logs)
@@ -51,16 +55,21 @@ module.exports = function(config) {
 
 
     // enable / disable watching file and executing tests whenever any file changes
-    autoWatch: false,
+    autoWatch: true,
 
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['Chrome'],
+    browsers: ['PhantomJS'],
 
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
-    singleRun: false
+    singleRun: false,
+    
+    hostname : process.env.IP,
+    port : process.env.PORT,
+    runnerPort : 0
+    
   });
 };
