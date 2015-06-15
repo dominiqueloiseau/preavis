@@ -26,6 +26,25 @@ window.calculateElapsedTime = function(dateStart, dateEnd) {
         (days ? days + " jour(s) " : "");
 }
 
+window.resignationNoticeInWeeks = function(dateStart, dateEnd) {
+    var momentStart = moment(dateStart);
+    var momentEnd = moment(dateEnd);
+    var months = momentEnd.diff(momentStart, 'months', true);
+    if (months < 3) return 1;
+    if (months < 6) return 2;
+    if (months < 12) return 3;
+    if (months < 18) return 4;
+    if (months < 24) return 5;
+
+    var years = momentEnd.diff(momentStart, 'years', true);
+    if (years < 4) return 6;
+    if (years < 5) return 7;
+    if (years < 6) return 9; //!
+    if (years < 7) return 10;
+    if (years < 8) return 12;
+    return 13;
+}
+
 var NoticeCtrl = function($scope) {
 
     $scope.dateStart = moment().toDate();
@@ -33,9 +52,20 @@ var NoticeCtrl = function($scope) {
 
     $scope.calculateNotice = function(newValue, oldValue /*for log only */ ) {
         $scope.elapsedTime = window.calculateElapsedTime($scope.dateStart, $scope.dateEnd);
-        $scope.error = moment($scope.dateStart).year() < 2014 ? 
-            "L'application ne calcule pas encore les préavis avant 2014, veuillez réessayer plus tard": undefined;
-        
+
+        var isResignation = true;
+
+        if (isResignation) {
+            if (moment($scope.dateStart).year() < 2014) {
+                $scope.error = "L'application ne calcule pas encore les préavis avant 2014, veuillez réessayer plus tard";
+                $scope.notice = undefined;
+            } else {
+                //http://www.emploi.belgique.be/defaultTab.aspx?id=42198
+                $scope.notice = window.resignationNoticeInWeeks($scope.dateStart, $scope.dateEnd);
+                $scope.error = undefined;
+            }
+        }
+
     }
 
     $scope.$watch('dateStart', $scope.calculateNotice);

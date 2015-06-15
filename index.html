@@ -2,34 +2,32 @@
 <html lang="en" ng-app="noticeApp">
 
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Calculateur de préavis - démission - licenciement</title>
-  <link rel="icon" type="image/png" href="https://assets-cdn.github.com/favicon.ico">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Calculateur de préavis - démission - licenciement</title>
+    <link rel="icon" type="image/png" href="https://assets-cdn.github.com/favicon.ico">
 
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/fontawesome/4.3.0/css/font-awesome.css">
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/8.5.0/styles/default.min.css">
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/bootstrap/3.3.4/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://raw.githubusercontent.com/mgcrea/bootstrap-additions/master/dist/bootstrap-additions.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/fontawesome/4.3.0/css/font-awesome.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/8.5.0/styles/default.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://raw.githubusercontent.com/mgcrea/bootstrap-additions/master/dist/bootstrap-additions.min.css">
 
-  <link rel="stylesheet" href="app/styles.css">
+    <link rel="stylesheet" href="app/styles.css">
 
 </head>
 
 <body ng-controller="NoticeCtrl">
 
-  <div class="container">
-    <header>
-      <h2 class="page-header ">Calculateur de préavis en cas de démission ou de licenciement en Belgique</h1>
+    <div class="container">
+        <header>
+            <h2 class="page-header ">Calculateur de préavis en cas de démission ou de licenciement en Belgique</h2>
       <p>
         Pour une démission ou un licenciement, le préavis légal a respecter peut varier. Comme la loi en la matière a changé le 1er janvier 2014, les contrats ayant débuté avant cette date nécessitent un calcul spécial.
       </p>
       <p>Cette page web propose de le calculer pour vous.</p>
     </header>
-    <h3 >Préavis légal en cas de démission</h3>
-    
-    <div  class="error"></div>
+    <h3 >Préavis légal en cas de démission</h3><!-- TODO onglet -->
     
     <div class="alert alert-danger" role="alert" ng-show="error">
       <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
@@ -53,9 +51,10 @@
     </div>
     
     <div class="col-xs-3">
-        <!-- TODO distinction ouvrier/employé si avant 2014 -->
+      <span ng-show="notice">
       Durée du préavis légal<br>
-      {{elapsedTime}}
+      {{notice}} semaine(s)
+      </span>
     </div>
   
   
