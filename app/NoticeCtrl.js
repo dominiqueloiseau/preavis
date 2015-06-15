@@ -33,6 +33,9 @@ var NoticeCtrl = function($scope) {
 
     $scope.calculateNotice = function(newValue, oldValue /*for log only */ ) {
         $scope.elapsedTime = window.calculateElapsedTime($scope.dateStart, $scope.dateEnd);
+        $scope.error = moment($scope.dateStart).year() < 2014 ? 
+            "L'application ne calcule pas encore les préavis avant 2014, veuillez réessayer plus tard": undefined;
+        
     }
 
     $scope.$watch('dateStart', $scope.calculateNotice);

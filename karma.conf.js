@@ -1,4 +1,5 @@
 // Karma configuration
+// dev: karma start --log-level debug --singleRun false --autoWatch true
 // Generated on Wed Jun 10 2015 14:09:14 GMT+0000 (UTC)
 
 module.exports = function(config) {
@@ -11,7 +12,7 @@ module.exports = function(config) {
     frameworks: ['jasmine'],
     // list of files / patterns to load in the browser
     files: [
-      'https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular.min.js',
+      'https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js',
       'https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js',
       'app/*.js'
     ],
