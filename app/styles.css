@@ -4,3 +4,10 @@ footer{
     bottom:0;
     width: inherit;
 }
+.nav-tabs{
+    margin-bottom:1em;
+}
+
+label:hover{
+    cursor:pointer;
+}

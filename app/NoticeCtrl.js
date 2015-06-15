@@ -53,9 +53,7 @@ var NoticeCtrl = function($scope) {
     $scope.calculateNotice = function(newValue, oldValue /*for log only */ ) {
         $scope.elapsedTime = window.calculateElapsedTime($scope.dateStart, $scope.dateEnd);
 
-        var isResignation = true;
-
-        if (isResignation) {
+        if ($scope.isResignation) {
             if (moment($scope.dateStart).year() < 2014) {
                 $scope.error = "L'application ne calcule pas encore les préavis avant 2014, veuillez réessayer plus tard";
                 $scope.notice = undefined;
@@ -64,12 +62,17 @@ var NoticeCtrl = function($scope) {
                 $scope.notice = window.resignationNoticeInWeeks($scope.dateStart, $scope.dateEnd);
                 $scope.error = undefined;
             }
+        } else {
+            $scope.error = "L'application ne calcule pas encore les préavis pour les licenciements, veuillez réessayer plus tard";
+            $scope.notice = undefined;
         }
 
     }
 
     $scope.$watch('dateStart', $scope.calculateNotice);
     $scope.$watch('dateEnd', $scope.calculateNotice);
+    
+    $scope.isResignation = true;
 
 };
 

@@ -22,47 +22,55 @@
     <div class="container">
         <header>
             <h2 class="page-header ">Calculateur de préavis en cas de démission ou de licenciement en Belgique</h2>
-      <p>
-        Pour une démission ou un licenciement, le préavis légal a respecter peut varier. Comme la loi en la matière a changé le 1er janvier 2014, les contrats ayant débuté avant cette date nécessitent un calcul spécial.
-      </p>
-      <p>Cette page web propose de le calculer pour vous.</p>
-    </header>
-    <h3 >Préavis légal en cas de démission</h3><!-- TODO onglet -->
-    
-    <div class="alert alert-danger" role="alert" ng-show="error">
-      <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-      <span class="sr-only">Erreur:</span>
-      {{error}}
+            <p>
+                Pour une démission ou un licenciement, le préavis légal a respecter peut varier. Comme la loi en la matière a changé le 1er janvier 2014, les contrats ayant débuté avant cette date nécessitent un calcul spécial.
+            </p>
+            <p>Cette page web propose de le calculer pour vous.</p>
+        </header>
+        <h3>Préavis légal:</h3>
+
+        <ul class="nav nav-tabs">
+            <li role="presentation" ng-class="{active:isResignation}"><a href="#" ng-click="isResignation = true;calculateNotice()">Démission</a>
+            </li>
+            <li role="presentation" ng-class="{active:!isResignation}"><a href="#" ng-click="isResignation = false;calculateNotice()">Licenciement</a>
+            </li>
+        </ul>
+
+        <div class="alert alert-danger" role="alert" ng-show="error" ng-cloak>
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <span class="sr-only">Erreur:</span> {{error}}
+        </div>
+
+
+        <div class="col-md-3 ">
+            <label for="dateStart"><i class="fa fa-calendar"></i> Date de début du contrat</label>
+            <!-- TODO (?) -->
+            <input type="text" id="dateStart" class="form-control" ng-model="dateStart" data-max-date="{{dateEnd}}" placeholder="Du " bs-datepicker data-date-format="dd/MM/yyyy">
+        </div>
+
+        <div class="col-md-3">
+            <label for="dateEnd"><i class="fa fa-calendar "></i> Date de fin du contrat</label>
+            <!-- TODO (?) -->
+            <input type="text" id="dateEnd" class="form-control" ng-model="dateEnd " data-min-date="{{dateStart}}" placeholder="au " bs-datepicker data-date-format="dd/MM/yyyy">
+        </div>
+
+        <div class="col-md-3">
+            <label>Durée effective du contrat</label>
+            <!-- TODO (?) -->
+            <div>{{elapsedTime}}</div>
+        </div>
+
+        <div class="col-md-3">
+            <label>Durée du préavis légal</label>
+            <div ng-show="notice">{{notice}} semaine(s) </div>
+        </div>
+
+
+
+        <footer>
+            source: <a href="http://www.emploi.belgique.be/defaultTab.aspx?id=42152 ">http://www.emploi.belgique.be/defaultTab.aspx?id=42152</a>
+        </footer>
     </div>
-  
-    <div class="col-xs-3 ">
-      <i class="fa fa-calendar "></i> Date de début du contrat <!-- TODO (?) --><br>
-      <input type="text" class="form-control" ng-model="dateStart" data-max-date="{{dateEnd}}" placeholder="Du " bs-datepicker data-date-format="dd/MM/yyyy">
-    </div>
-  
-    <div class="col-xs-3">
-      <i class="fa fa-calendar "></i> Date de fin du contrat <!-- TODO (?) --><br>
-      <input type="text" class="form-control" ng-model="dateEnd " data-min-date="{{dateStart}}" placeholder="au " bs-datepicker data-date-format="dd/MM/yyyy">
-    </div>
-    
-    <div class="col-xs-3">
-      Durée effective du contrat <!-- TODO (?) --><br>
-      {{elapsedTime}}
-    </div>
-    
-    <div class="col-xs-3">
-      <span ng-show="notice">
-      Durée du préavis légal<br>
-      {{notice}} semaine(s)
-      </span>
-    </div>
-  
-  
-  
-    <footer>
-      source: <a href="http://www.emploi.belgique.be/defaultTab.aspx?id=42152 ">http://www.emploi.belgique.be/defaultTab.aspx?id=42152</a>
-    </footer>
-  </div>
 </body>
 
 <script src="https://code.jquery.com/jquery-2.1.3.min.js "></script>
@@ -74,5 +82,14 @@
 
 <script src="app/NoticeCtrl.js "></script>
 
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-64144605-1', 'auto');
+  ga('send', 'pageview');
+</script>
 
 </html>
